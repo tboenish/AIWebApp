@@ -6,6 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="output.css" rel="stylesheet">
+
+    <style>
+        @keyframes rotate
+        {
+            from{
+                transform: rotate(0deg);
+            }
+            to
+            {
+                transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes rotate
+        {
+            from
+            {
+                -webkit-transform: roate(0deg);
+
+            }
+            to
+            {
+                -webkit-transform: rotate(360deg);
+            }
+            
+        }
+
+        .load
+        {
+            width: 100px;
+            height: 100px;
+            margin: 110px auto 0;
+            border: solid 10px #1e11dc;
+            border-radius: 50%;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+
+            -webkit-transitions: all 0.5s ease-in;
+            -webkit-animation-name: rotate;
+            -webkit-animation-duration: 1.0s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: linear;
+
+            transition:all 0.5s ease-in;
+            animation-name: rotate;
+            animation-duration: 1.0s;
+            animation-iteration-count: infinite;
+            animation-timing-function:linear;
+        }
+    </style>
 </head>
 <body class ="flex flex-col min-h-screen bg-gray-100 font-sans antialiased">
     <!-- Nav Bar-->
@@ -46,11 +96,18 @@
                 </div>
             </div>
 
+
+
+            <!-- section for loading icon -->
+             <div style="display: none;"id="loading-circle" class="load">
+
+             </div>
+
             <!-- OutPut Section -->
             <section class="mt-10 flex-grow">
                 <h2 class="text-xl mb-4 font-semibold">Generated Output</h2>
                 <div id="blogContent" class="mt-2 text-gray-700 space-y-4">
-                    <!-- section for loading icon -->
+                    
 
                 </div>
             </section>
@@ -65,7 +122,7 @@
         Insert Footer
      </footer>
 
-     <!-- call JavaScript file -->
+     <!-- Call JavaScript file -->
      <script>
     
      </script>
