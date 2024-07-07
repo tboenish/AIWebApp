@@ -101,7 +101,7 @@
 
 
             <!-- section for loading icon -->
-             <div style="display: none;"id="loading-circle" class="load">
+             <div style="display: none;"id="loadingCircle" class="load">
 
              </div>
 
@@ -126,6 +126,48 @@
 
      <!-- Call JavaScript file -->
      <script>
+        document.getElementById('generateBlogButton').addEventListener('click',async() => {
+
+            const youtubeLink = document.getElementById('youtubeLink').value;
+            const blogContent = document.getElementById('blogContent');
+
+            if(youtubeLink){
+
+                document.getElementById('loadingCircle').style.display='block';
+                loadingIndcator.classlist.remove('hidden');
+                blogContent.innerHTML='';
+
+                const endpointUrl = '/generate-blog';
+
+                try{
+                    const response = await fetch(endpointUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({link: youtubeLink})
+                    });
+
+                    const data = await response.json();
+
+                    blogContent.innerHTML = data.content;
+                    
+                }
+                catch(error){
+                    console.error("Error occurred:" ,error);
+                    alert("Something went wrong. Please try again later.");
+                    
+                }
+
+                document.getElementById('loadingCircle').style.display='none';
+
+            }
+            else{
+                alert("Please enter a YouTube link.");
+            }
+      
+
+        });
     
      </script>
 </body>
