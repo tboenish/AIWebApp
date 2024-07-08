@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.conf import settings
 import json
+
 from pytube import YouTube
 import os
 import assemblyai as aai
@@ -47,7 +48,7 @@ def generate_blog(request):
         #save article to database
 
         #return the article as the response
-        return JsonResponse({'content':blog_content})
+        return JsonResponse({'content': blog_content})
 
 
     else:
@@ -64,12 +65,13 @@ def download_audio(link):
     out_file= video.download(output_path=settings.MEDIA_ROOT)
     base, ext = os.path.splitext(out_file)
     new_file = base + '.mp3'
-    os.rename(out_file,new_file)
+    os.rename(out_file, new_file)
     return new_file
 
 def get_transcription(link):
     audio_file = download_audio(link)
     aai.settings.api_key="e277a7f9ee36471da0a6d86c41fbc806"
+    
 
     transcriber = aai.Transcriber()
     transcript = transcriber.transcribe(audio_file)
@@ -77,19 +79,28 @@ def get_transcription(link):
     return transcript.text
 
 def generate_blog_from_transcription(transcription):
-    openai.api_key="sk-proj-ITo8OeOYe4IDJeaHXbRbT3BlbkFJKSA9tPkG3wP0i8UDWg4t"
+
+    
+    openai.api_key="sk-proj-Ne96tawl1AC1gdoOd5rgT3BlbkFJlBiOENCxeVDjYmW9ab7J"
 
     prompt = f"Based on the given YouTube Video transcript, write a complete and comprehensive summary based on the transcript. Do not make it sound like a YouTube Video, make it read like a real description:\n\n{transcription}\n\nArticle:"
 
-    response = openai.Completion.create(
-        model="gpt-3.5-turbo-instruct",
-        prompt=prompt,
+    response = openai.chat.completions.create(
+        
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        model='gpt-3.5-turbo',
         max_tokens=1000
     )
+    print(response)
 
-    generated_content = response.choices[0].text.strip()
+    generated_content = response.choices[0].message.content
 
     return generated_content
+
+    
 
 
 
