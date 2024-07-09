@@ -12,12 +12,13 @@
      <!-- Nav Bar-->
      <nav class ="bg-blue-600 p-4 text-white flex justify-between">
         <div>
-            <h1 class="text-3xl font-bold">AI Blog Generator</h1>
+            <h1 class="text-3xl font-bold">AI Description Generator</h1>
         </div>
         <div class="space-x-4">
-            <a href="#" class="text-white hover:underline">Welcome {{user.username}}</a>
+            <a class="text-white">Welcome {{user.username}}</a>
+            <a href="/" class="text-white hover:underline">Home</a>
             <a href="/blog-list" class="text-white hover:underline mx-4">Saved Content</a>
-            <a href="#" class="text-white hover:underline">Logout</a>
+            <a href="/logout" class="text-white hover:underline">Logout</a>
         </div>
 
      </nav>
@@ -55,9 +56,10 @@
         </div>
      </div>
 
+     <!-- Make a Footer -->
      <footer class="text-center p-4 text-black mt-6">
-        Insert Footer
-    </footer>
+        Check out my other projects here: <a href="https://github.com/tboenish" class="hover:underline">github</a>
+     </footer>
     
 </body>
 </html>

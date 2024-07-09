@@ -5,9 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <link href="{% static 'output.css' %}" rel="stylesheet">
 
+    <!-- Loading Cirlce -->
     <style>
         @keyframes rotate
         {
@@ -62,12 +63,13 @@
     <!-- Nav Bar-->
      <nav class ="bg-blue-600 p-4 text-white flex justify-between">
         <div>
-            <h1 class="text-3xl font-bold">AI Blog Generator</h1>
+            <h1 class="text-3xl font-bold">AI Description Generator</h1>
         </div>
         <div class="space-x-4">
-            <a href="#" class="text-white hover:underline">Welcome {{user.username}}</a>
-            <a href="/blog-list" class="text-white hover:underline mx-4">Saved Content  </a>
-            <a href="logout" class="text-white hover:underline">Logout</a>
+            <a class="text-white">Welcome {{user.username}}</a>
+            <a href="/" class="text-white hover:underline">Home</a>
+            <a href="/blog-list" class="text-white hover:underline mx-4">Saved Content</a>
+            <a href="/logout" class="text-white hover:underline">Logout</a>
         </div>
 
      </nav>
@@ -81,9 +83,9 @@
             
             <!-- Intro Section -->
             <div class="text-center">
-                <h2 class="text-2xl font-semibold mb-4">Welcome to the AI Blog Generator</h2>
+                <h2 class="text-2xl font-semibold mb-4">Welcome to the AI Description Generator</h2>
                 <p class="text-gray-700">
-                    Generate blog articles from YouTube Videos. Enter the link below to try it out.
+                    Generate unique descrptions from YouTube Videos. Enter a YouTube link below to try it out.
                 </p>
             </div>
 
@@ -122,7 +124,7 @@
 
      <!-- Make a Footer -->
      <footer class="text-center p-4 text-black mt-6">
-        Insert Footer
+        Check out my other projects here: <a href="https://github.com/tboenish" class="hover:underline">github</a>
      </footer>
 
      <!-- Call JavaScript file -->
